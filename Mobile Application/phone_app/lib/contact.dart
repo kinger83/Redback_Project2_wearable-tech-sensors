@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class ContactUsScreen extends StatelessWidget {
+  const ContactUsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff87A395),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -16,14 +18,14 @@ class ContactUsScreen extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            color: Color(0xFF8F9E91),
+            color: const Color(0xFF8F9E91),
           ),
           Positioned(
             top: 20,
             left: 0,
             right: 0,
             child: Container(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: const Center(
                 child: Text(
                   "Contact Us",
@@ -41,8 +43,8 @@ class ContactUsScreen extends StatelessWidget {
             left: 0,
             right: 0,
             child: Container(
-              padding: EdgeInsets.all(16.0),
-              child: Center(
+              padding: const EdgeInsets.all(16.0),
+              child: const Center(
                 child: Text(
                   "Fill out the form to get in contact",
                   style: TextStyle(
@@ -60,12 +62,12 @@ class ContactUsScreen extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(bottom: 16),
+                  margin: const EdgeInsets.only(bottom: 16),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: TextField(
+                  child: const TextField(
                     decoration: InputDecoration(
                       hintText: "Subject",
                       contentPadding: EdgeInsets.all(16),
@@ -77,7 +79,7 @@ class ContactUsScreen extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: TextField(
+                  child: const TextField(
                     maxLines: 4, // Allow multiple lines for the message
                     decoration: InputDecoration(
                       hintText: "Message",
@@ -97,9 +99,9 @@ class ContactUsScreen extends StatelessWidget {
                 // Add your send message logic here
               },
               style: ElevatedButton.styleFrom(
-                primary: Color(0xFF758D7E),
+                backgroundColor: const Color(0xFF758D7E),
               ),
-              child: Text(
+              child: const Text(
                 "Send",
                 style: TextStyle(
                   fontSize: 22,

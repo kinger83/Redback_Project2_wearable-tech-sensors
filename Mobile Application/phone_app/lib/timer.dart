@@ -7,7 +7,7 @@ import 'seconds_singleton.dart';
 
 class TimerPage extends StatefulWidget {
   final String title;
-  TimerPage({required this.title});
+  TimerPage({super.key, required this.title});
   int seconds = 0;
   int elapsed = 0;
   int getSeconds() {
@@ -27,7 +27,7 @@ class _TimerPageState extends State<TimerPage> {
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(Duration(seconds: 1), _incrementTimer);
+    _timer = Timer.periodic(const Duration(seconds: 1), _incrementTimer);
   }
 
   void _incrementTimer(Timer timer) {
@@ -85,16 +85,16 @@ class _TimerPageState extends State<TimerPage> {
       body: Container(
         color: const Color(0xFF8F9E91),
         child: ListView(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           children: [
             Text(
               widget.title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 40,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Container(
               width: 150,
               height: 150,
@@ -109,7 +109,7 @@ class _TimerPageState extends State<TimerPage> {
               child: Center(
                 child: Text(
                   _formatTime(_seconds),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -117,31 +117,31 @@ class _TimerPageState extends State<TimerPage> {
                 ),
               ),
             ), // container holding circle elapsed time display
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _togglePause,
               style: ElevatedButton.styleFrom(
-                primary: Colors.black,
-                minimumSize: Size(160, 60),
+                backgroundColor: Colors.black,
+                minimumSize: const Size(160, 60),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
               child: Text(_isPaused ? 'Resume' : 'Pause'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _startStopTimer,
               style: ElevatedButton.styleFrom(
-                primary: Colors.red,
-                minimumSize: Size(160, 60),
+                backgroundColor: Colors.red,
+                minimumSize: const Size(160, 60),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
               child: Text(_isRunning ? 'Stop' : 'Start'),
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             Container(
               width: MediaQuery.of(context).size.width,
               constraints: BoxConstraints(
@@ -158,7 +158,7 @@ class _TimerPageState extends State<TimerPage> {
 }
 
 class TimerPageSingleton {
-  static late final TimerPageSingleton _singleton =
+  static final TimerPageSingleton _singleton =
       TimerPageSingleton._internal();
 
   late TimerPage timerPageInstance;

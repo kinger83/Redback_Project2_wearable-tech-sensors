@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class EmailScreen extends StatefulWidget {
+  const EmailScreen({super.key});
+
   @override
   _EmailScreenState createState() => _EmailScreenState();
 }
@@ -14,7 +16,7 @@ class _EmailScreenState extends State<EmailScreen> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF8F9E91),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -23,7 +25,7 @@ class _EmailScreenState extends State<EmailScreen> {
       body: Container(
         padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
         decoration: const BoxDecoration(
-          color: const Color(0xFF8F9E91),
+          color: Color(0xFF8F9E91),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +49,7 @@ class _EmailScreenState extends State<EmailScreen> {
                   return ListTile(
                     title: Text(
                       registeredEmails[index],
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
                       ),
@@ -63,10 +65,10 @@ class _EmailScreenState extends State<EmailScreen> {
                   _showAddEmailDialog(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: const Color(0xFF8F9E91),
-                  minimumSize: Size(200, 50),
+                  backgroundColor: const Color(0xFF8F9E91),
+                  minimumSize: const Size(200, 50),
                 ),
-                child: Text(
+                child: const Text(
                   'Add Email',
                   style: TextStyle(
                     fontSize: 18,
@@ -87,10 +89,10 @@ class _EmailScreenState extends State<EmailScreen> {
       builder: (BuildContext context) {
         final emailController = TextEditingController();
         return AlertDialog(
-          title: Text('Add Email'),
+          title: const Text('Add Email'),
           content: TextField(
             controller: emailController,
-            decoration: InputDecoration(labelText: 'Enter Email'),
+            decoration: const InputDecoration(labelText: 'Enter Email'),
           ),
           actions: [
             ElevatedButton(
@@ -103,13 +105,13 @@ class _EmailScreenState extends State<EmailScreen> {
                   Navigator.pop(context);
                 }
               },
-              child: Text('Save Email'),
+              child: const Text('Save Email'),
             ),
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
           ],
         );
@@ -119,7 +121,7 @@ class _EmailScreenState extends State<EmailScreen> {
 }
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: EmailScreen(),
   ));
 }

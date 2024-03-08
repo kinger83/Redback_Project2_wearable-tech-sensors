@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: isUser != null ? HomePage(title: '') : Login(),
+      home: isUser != null ? const HomePage(title: '') : const Login(),
     );
   }
 }
@@ -52,7 +52,7 @@ class _Setting extends State<Setting> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF8F9E91),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -86,19 +86,19 @@ class _Setting extends State<Setting> {
           Positioned(
             left: 50,
             bottom: 450,
-            child: Container(
+            child: SizedBox(
               width: 300,
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MyAccount(title: 'Profile'),
+                      builder: (context) => const MyAccount(title: 'Profile'),
                     ),
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent,
+                  backgroundColor: Colors.transparent,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -132,19 +132,19 @@ class _Setting extends State<Setting> {
           Positioned(
             left: 50,
             bottom: 390,
-            child: Container(
+            child: SizedBox(
               width: 300,
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => InformationScreen(),
+                      builder: (context) => const InformationScreen(),
                     ),
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent,
+                  backgroundColor: Colors.transparent,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -178,19 +178,19 @@ class _Setting extends State<Setting> {
           Positioned(
             left: 50,
             bottom: 330,
-            child: Container(
+            child: SizedBox(
               width: 300,
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ContactUsScreen(),
+                      builder: (context) => const ContactUsScreen(),
                     ),
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent,
+                  backgroundColor: Colors.transparent,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -233,7 +233,7 @@ class _Setting extends State<Setting> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomePage(title: ""),
+                    builder: (context) => const HomePage(title: ""),
                   ),
                 );
                 break;
@@ -249,14 +249,14 @@ class _Setting extends State<Setting> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Setting(title: "Settings"),
+                    builder: (context) => const Setting(title: "Settings"),
                   ),
                 );
                 break;
             }
           });
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',

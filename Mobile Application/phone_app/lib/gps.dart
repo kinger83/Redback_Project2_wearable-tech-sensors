@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 
 class MapPage extends StatefulWidget {
   MapPage({super.key});
@@ -24,13 +23,13 @@ class MapPage extends StatefulWidget {
 class _MapPageState extends State<MapPage> {
   final Completer<GoogleMapController> _mapController =
       Completer<GoogleMapController>();
-  Location _locationController = new Location();
-  LatLng? _currentPosition = null;
-  bool _isTracking = true;
+  final Location _locationController = Location();
+  LatLng? _currentPosition;
+  final bool _isTracking = true;
 
-  List<LatLng> _coordsList = [];
+  final List<LatLng> _coordsList = [];
 
-  Polyline _polyLine = Polyline(
+  Polyline _polyLine = const Polyline(
     polylineId: PolylineId("userRoute"),
     color: Colors.blue,
     width: 5,
@@ -63,13 +62,13 @@ class _MapPageState extends State<MapPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _currentPosition == null
-          ? Center(
+          ? const Center(
               child: Text("Loading..."),
             )
           : GoogleMap(
               onMapCreated: ((GoogleMapController controller) =>
                   _mapController.complete(controller)),
-              initialCameraPosition: CameraPosition(
+              initialCameraPosition: const CameraPosition(
                 target: _initPos,
                 zoom: 15,
               ),
@@ -79,7 +78,7 @@ class _MapPageState extends State<MapPage> {
                 //     icon: BitmapDescriptor.defaultMarker,
                 //     position: _currentPosition!),
                 Marker(
-                    markerId: MarkerId("_currentLocation"),
+                    markerId: const MarkerId("_currentLocation"),
                     icon: BitmapDescriptor.defaultMarker,
                     position: _currentPosition!)
               },
@@ -142,7 +141,7 @@ class _MapPageState extends State<MapPage> {
       widget._polylineCoords = _coordsList;
       cameraFollow(_currentPosition!);
       int timercount = 0;
-      Timer.periodic(Duration(seconds: 10), (timer) {
+      Timer.periodic(const Duration(seconds: 10), (timer) {
         getLocationUpdates();
         timercount++;
         if (timercount >= 2) {
@@ -205,7 +204,7 @@ class _MapPageState extends State<MapPage> {
         widget._polylineCoords = _coordsList;
         // update polylines
         _polyLine = Polyline(
-            polylineId: PolylineId("userRoute"),
+            polylineId: const PolylineId("userRoute"),
             color: Colors.blue,
             width: 5,
             points: widget._polylineCoords);
@@ -221,14 +220,14 @@ class _MapPageState extends State<MapPage> {
 
   // ******* Logging functions
 
-  double? distanceCovered = null;
-  double? workOutSeconds = null;
-  double? evelvationChange = null;
-  double? avgSpeed = null;
+  double? distanceCovered;
+  double? workOutSeconds;
+  double? evelvationChange;
+  double? avgSpeed;
 } // end class
 
 class MapPageSingleton {
-  static late final MapPageSingleton _singleton = MapPageSingleton._internal();
+  static final MapPageSingleton _singleton = MapPageSingleton._internal();
 
   late MapPage mapPageInstance;
 

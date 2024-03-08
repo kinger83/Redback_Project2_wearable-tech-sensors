@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +50,7 @@ class _MyAccount extends State<MyAccount> {
           Positioned(
             left: 50,
             bottom: 450,
-            child: Container(
+            child: SizedBox(
               width: 300,
               child: ElevatedButton(
                 onPressed: () {
@@ -59,12 +58,12 @@ class _MyAccount extends State<MyAccount> {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          EditProfileActivity(title: 'Profile'),
+                          const EditProfileActivity(title: 'Profile'),
                     ),
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent,
+                  backgroundColor: Colors.transparent,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -98,19 +97,19 @@ class _MyAccount extends State<MyAccount> {
           Positioned(
             left: 50,
             bottom: 390,
-            child: Container(
+            child: SizedBox(
               width: 300,
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Privacy(),
+                      builder: (context) => const Privacy(),
                     ),
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent,
+                  backgroundColor: Colors.transparent,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -144,12 +143,12 @@ class _MyAccount extends State<MyAccount> {
           Positioned(
             left: 50,
             bottom: 330,
-            child: Container(
+            child: SizedBox(
               width: 300,
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent,
+                  backgroundColor: Colors.transparent,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -183,14 +182,14 @@ class _MyAccount extends State<MyAccount> {
           Positioned(
             left: 50,
             bottom: 270,
-            child: Container(
+            child: SizedBox(
               width: 300,
               child: ElevatedButton(
                 onPressed: () {
                   logOut();
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.red,
+                  backgroundColor: Colors.red,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),

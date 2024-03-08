@@ -1,5 +1,5 @@
 class TimerSingleton {
-  static late final TimerSingleton _singleton = TimerSingleton._internal();
+  static final TimerSingleton _singleton = TimerSingleton._internal();
 
   int seconds = 0;
 

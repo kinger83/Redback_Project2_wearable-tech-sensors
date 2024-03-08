@@ -12,7 +12,7 @@ class MyActivity extends StatefulWidget {
 }
 
 class _MyActivityState extends State<MyActivity> {
-  int _currentIndex = 0;
+  final int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +26,9 @@ class _MyActivityState extends State<MyActivity> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const SizedBox(height: 70),
-                  Container(
+                  const SizedBox(
                     width: double.infinity,
-                    child: const Text(
+                    child: Text(
                       "Activity Type",
                       style: TextStyle(
                         fontSize: 28,
@@ -42,7 +42,7 @@ class _MyActivityState extends State<MyActivity> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
+                      SizedBox(
                         width: 320,
                         child: ElevatedButton(
                           onPressed: () {
@@ -63,8 +63,8 @@ class _MyActivityState extends State<MyActivity> {
                               style: TextStyle(fontSize: 18)),
                         ),
                       ),
-                      SizedBox(height: 10),
-                      Container(
+                      const SizedBox(height: 10),
+                      SizedBox(
                         width: 320,
                         child: ElevatedButton(
                           onPressed: () {
@@ -81,9 +81,9 @@ class _MyActivityState extends State<MyActivity> {
                               style: TextStyle(fontSize: 18)),
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       // Yoga button
-                      Container(
+                      SizedBox(
                         width: 320,
                         child: ElevatedButton(
                           onPressed: () {
@@ -100,9 +100,9 @@ class _MyActivityState extends State<MyActivity> {
                               style: TextStyle(fontSize: 18)),
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       // Sports button
-                      Container(
+                      SizedBox(
                         width: 320,
                         child: ElevatedButton(
                           onPressed: () {
@@ -119,9 +119,9 @@ class _MyActivityState extends State<MyActivity> {
                               style: TextStyle(fontSize: 18)),
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       // Aerobic button
-                      Container(
+                      SizedBox(
                         width: 320,
                         child: ElevatedButton(
                           onPressed: () {
@@ -138,9 +138,9 @@ class _MyActivityState extends State<MyActivity> {
                               style: TextStyle(fontSize: 18)),
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       // Jumba button
-                      Container(
+                      SizedBox(
                         width: 320,
                         child: ElevatedButton(
                           onPressed: () {

@@ -14,14 +14,14 @@ class PrivacyState extends State<Privacy> {
 
   @override
   Widget build(BuildContext context) {
-    final textColor = Color(0xFF380E4A); // Define the text color
+    const textColor = Color(0xFF380E4A); // Define the text color
 
     return Scaffold(
       backgroundColor: const Color(0xFF8F9E91),
       appBar: AppBar(
         backgroundColor: const Color(0xFF8F9E91),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -30,12 +30,12 @@ class PrivacyState extends State<Privacy> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Container(
+          child: SizedBox(
             width: 300,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Container(
+                const SizedBox(
                   height: 40, // Fixed height for the "Privacy" text
                   child: Center(
                     child: Text(
@@ -48,8 +48,8 @@ class PrivacyState extends State<Privacy> {
                     ),
                   ),
                 ),
-                SizedBox(height: 60),
-                Align(
+                const SizedBox(height: 60),
+                const Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Select Visibility:',
@@ -57,7 +57,7 @@ class PrivacyState extends State<Privacy> {
                         fontSize: 18, color: textColor), // Set text color
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 DropdownButton<String>(
                   value: _selectedVisibility,
                   onChanged: (newValue) {
@@ -71,14 +71,14 @@ class PrivacyState extends State<Privacy> {
                         value: value,
                         child: Text(
                           value,
-                          style: TextStyle(color: textColor), // Set text color
+                          style: const TextStyle(color: textColor), // Set text color
                         ),
                       );
                     },
                   ).toList(),
                 ),
-                SizedBox(height: 20),
-                Align(
+                const SizedBox(height: 20),
+                const Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Notification Settings:',
@@ -87,7 +87,7 @@ class PrivacyState extends State<Privacy> {
                   ),
                 ),
                 ListTile(
-                  title: Text(
+                  title: const Text(
                     'Disable All Notification',
                     style: TextStyle(color: textColor), // Set text color
                   ),
@@ -102,7 +102,7 @@ class PrivacyState extends State<Privacy> {
                   ),
                 ),
                 ListTile(
-                  title: Text(
+                  title: const Text(
                     'Disable Follow Notification',
                     style: TextStyle(color: textColor), // Set text color
                   ),
@@ -117,7 +117,7 @@ class PrivacyState extends State<Privacy> {
                   ),
                 ),
                 ListTile(
-                  title: Text(
+                  title: const Text(
                     'Disable Comment Notification',
                     style: TextStyle(color: textColor), // Set text color
                   ),

@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 import 'Friends.dart';
 import 'MyActivity.dart';
@@ -10,13 +8,15 @@ import 'main.dart';
 import 'myAccount.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: HomePage(title: "Home Page"),
     );
   }
@@ -39,11 +39,13 @@ class _HomePageState extends State<HomePage> {
   double totalTime = 7;
   double totalAvgTime = 10;
   int totalWorkouts = 0;
+  @override
   void initState() {
     super.initState();
     retrieveLogs();
   }
 
+  @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
@@ -75,7 +77,7 @@ class _HomePageState extends State<HomePage> {
               future: retrieveLogs(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
                   return Center(child: Text('Error: ${snapshot.error}'));
                 } else {
@@ -95,10 +97,10 @@ class _HomePageState extends State<HomePage> {
             //   avgTime: totalAvgTime,
             //   avgPace: totalAvgPace,
             // ),
-            MyActivity(
+            const MyActivity(
               title: '',
             ),
-            MyAccount(title: ''),
+            const MyAccount(title: ''),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -119,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Setting(title: "Settings"),
+                      builder: (context) => const Setting(title: "Settings"),
                     ),
                   );
                   break;
@@ -196,7 +198,7 @@ class HomeTab extends StatelessWidget {
   final double avgPace;
   final int workouts;
 
-  HomeTab({
+  const HomeTab({super.key, 
     required this.totalKilometer,
     required this.totalTime,
     required this.avgTime,
@@ -207,25 +209,25 @@ class HomeTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xFF8F9E91),
+      color: const Color(0xFF8F9E91),
       child: Stack(
         children: [
           Column(
             children: [
-              SizedBox(height: 40),
-              SizedBox(height: 20),
+              const SizedBox(height: 40),
+              const SizedBox(height: 20),
               Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 500),
-                      child: Container(
+                      child: SizedBox(
                         width: 300,
                         child: ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.black,
+                            backgroundColor: Colors.black,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0),
                             ),
@@ -252,25 +254,25 @@ class HomeTab extends StatelessWidget {
               height: 450,
               child: Container(
                 color: Colors.brown,
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Column(
                   children: [
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Text(
                             '${totalKilometer.toStringAsFixed(2) ?? 0} Km',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
                           ),
                         ),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.only(bottom: 20.0),
                           child: Text(
                             'Total Distance',
@@ -283,7 +285,7 @@ class HomeTab extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -293,11 +295,11 @@ class HomeTab extends StatelessWidget {
                               width: 150,
                               height: 110,
                               color: Colors.green,
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               child: Column(
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(8.0),
                                     child: Text(
                                       _formatTime(totalTime.toInt() ?? 0),
                                       style: const TextStyle(
@@ -307,7 +309,7 @@ class HomeTab extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  Text(
+                                  const Text(
                                     'Total Time',
                                     style: TextStyle(
                                       fontSize: 16,
@@ -317,26 +319,26 @@ class HomeTab extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Container(
                               width: 150,
                               height: 110,
                               color: Colors.green,
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               child: Column(
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(8.0),
                                     child: Text(
                                       '$workouts',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 24,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
                                       ),
                                     ),
                                   ),
-                                  Text(
+                                  const Text(
                                     'Workouts',
                                     style: TextStyle(
                                       fontSize: 16,
@@ -354,21 +356,21 @@ class HomeTab extends StatelessWidget {
                               width: 150,
                               height: 110,
                               color: Colors.green,
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               child: Column(
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(8.0),
                                     child: Text(
                                       _formatTime((avgTime).toInt() ?? 0),
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 24,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
                                       ),
                                     ),
                                   ),
-                                  Text(
+                                  const Text(
                                     'Average Time',
                                     style: TextStyle(
                                       fontSize: 16,
@@ -378,26 +380,26 @@ class HomeTab extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Container(
                               width: 150,
                               height: 110,
                               color: Colors.green,
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               child: Column(
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(8.0),
                                     child: Text(
-                                      '${avgPace.toStringAsFixed(2)}',
-                                      style: TextStyle(
+                                      avgPace.toStringAsFixed(2),
+                                      style: const TextStyle(
                                         fontSize: 24,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
                                       ),
                                     ),
                                   ),
-                                  Text(
+                                  const Text(
                                     'Avg Pace (km/h)',
                                     style: TextStyle(
                                       fontSize: 16,
@@ -431,9 +433,11 @@ class HomeTab extends StatelessWidget {
 }
 
 class ProfileTab extends StatelessWidget {
+  const ProfileTab({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('Profile Content'),
     );
   }

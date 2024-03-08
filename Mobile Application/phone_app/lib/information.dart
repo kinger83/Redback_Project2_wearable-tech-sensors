@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'contact.dart';
 
 class InformationScreen extends StatelessWidget {
+  const InformationScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF8F9E91),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -17,15 +19,15 @@ class InformationScreen extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            color: Color(0xFF8F9E91),
+            color: const Color(0xFF8F9E91),
           ),
           Positioned(
             top: 40, // Adjust the top value to position the header
             left: 0,
             right: 0,
             child: Container(
-              padding: EdgeInsets.all(16.0),
-              child: Center(
+              padding: const EdgeInsets.all(16.0),
+              child: const Center(
                 child: Text(
                   "Information",
                   style: TextStyle(
@@ -44,7 +46,7 @@ class InformationScreen extends StatelessWidget {
                 160, // Adjust the bottom value to create space for the button
             child: ListView(
               shrinkWrap: true,
-              children: [
+              children: const [
                 Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -77,20 +79,20 @@ class InformationScreen extends StatelessWidget {
             right: 0,
             bottom: 80,
             child: Container(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ContactUsScreen(),
+                      builder: (context) => const ContactUsScreen(),
                     ),
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF758D7E), // Adjust the color here
+                  backgroundColor: const Color(0xFF758D7E), // Adjust the color here
                 ),
-                child: Text(
+                child: const Text(
                   "Contact Us",
                   style: TextStyle(
                     fontSize: 22,
@@ -104,12 +106,12 @@ class InformationScreen extends StatelessWidget {
             left: 16, // Adjust the left value to control the width
             right: 16, // Adjust the right value to control the width
             child: Container(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12), // Add rounded corners
               ),
-              child: Column(
+              child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(

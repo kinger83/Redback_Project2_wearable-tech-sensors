@@ -17,13 +17,13 @@ class _WorkoutState extends State<Workout> {
     return Scaffold(
       appBar: null,
       body: Container(
-        color: Color(0xFF8F9E91),
+        color: const Color(0xFF8F9E91),
         child: Stack(
           children: [
             Column(
               children: [
-                SizedBox(height: 40),
-                Text(
+                const SizedBox(height: 40),
+                const Text(
                   "Workout",
                   style: TextStyle(
                     fontSize: 24,
@@ -31,8 +31,8 @@ class _WorkoutState extends State<Workout> {
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(height: 20),
-                Column(
+                const SizedBox(height: 20),
+                const Column(
                   children: [
                     Row(
                       children: [
@@ -86,8 +86,8 @@ class _WorkoutState extends State<Workout> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
-                Text(
+                const SizedBox(height: 20),
+                const Text(
                   "Time Elapsed",
                   style: TextStyle(
                     fontSize: 24,
@@ -95,27 +95,27 @@ class _WorkoutState extends State<Workout> {
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
-                  "$elapsedTime",
-                  style: TextStyle(
+                  elapsedTime,
+                  style: const TextStyle(
                     fontSize: 18,
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(top: 20),
-                        child: Container(
+                        child: SizedBox(
                           width: 300,
                           child: ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.black,
+                              backgroundColor: Colors.black,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
@@ -144,7 +144,7 @@ class _WorkoutState extends State<Workout> {
             _currentIndex = index;
           });
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -167,12 +167,12 @@ class WorkoutMetricBox extends StatelessWidget {
   final String label;
   final String value;
 
-  WorkoutMetricBox({required this.label, required this.value});
+  const WorkoutMetricBox({super.key, required this.label, required this.value});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       width: double.infinity,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12.0),
@@ -183,11 +183,11 @@ class WorkoutMetricBox extends StatelessWidget {
             children: [
               Container(
                 color: Colors.white,
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: Center(
                   child: Text(
                     label,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
@@ -195,11 +195,11 @@ class WorkoutMetricBox extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: Center(
                   child: Text(
                     value,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 19,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,

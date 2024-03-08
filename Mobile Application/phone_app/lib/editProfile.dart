@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'Homepage.dart';
 //import 'main.dart';
 //import 'MyActivity.dart';
 import 'package:http/http.dart' as http;
@@ -14,11 +13,11 @@ class EditProfileActivity extends StatefulWidget {
 }
 
 class _EditProfileActivityState extends State<EditProfileActivity> {
-  int _currentIndex = 0;
-  TextEditingController _firstNameController = TextEditingController();
-  TextEditingController _lastNameController = TextEditingController();
-  TextEditingController _usernameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
+  final int _currentIndex = 0;
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
 
   @override
   Future<void> _saveProfile() async {
@@ -52,12 +51,13 @@ class _EditProfileActivityState extends State<EditProfileActivity> {
     }
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF8F9E91), // Set the background color
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).pop(); // This will navigate back.
           },
@@ -72,9 +72,9 @@ class _EditProfileActivityState extends State<EditProfileActivity> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const SizedBox(height: 0),
-                  Container(
+                  const SizedBox(
                     width: double.infinity,
-                    child: const Text(
+                    child: Text(
                       "Edit Profile",
                       style: TextStyle(
                         fontSize: 28,
@@ -96,10 +96,10 @@ class _EditProfileActivityState extends State<EditProfileActivity> {
                               child: TextField(
                                 controller: _firstNameController,
                                 decoration:
-                                    InputDecoration(labelText: "First Name"),
+                                    const InputDecoration(labelText: "First Name"),
                               ),
                             ),
-                            SizedBox(width: 16), // Add spacing between fields
+                            const SizedBox(width: 16), // Add spacing between fields
                             Expanded(
                               child: TextField(
                                 controller: _lastNameController,
@@ -112,18 +112,18 @@ class _EditProfileActivityState extends State<EditProfileActivity> {
                         ),
                         TextField(
                           controller: _usernameController,
-                          decoration: InputDecoration(labelText: "Username"),
+                          decoration: const InputDecoration(labelText: "Username"),
                         ),
                         TextField(
                           controller: _emailController,
-                          decoration: InputDecoration(labelText: "Email"),
+                          decoration: const InputDecoration(labelText: "Email"),
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: _saveProfile,
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFF8F9E91),
-                            side: BorderSide(color: Color(0xFF380E4A)),
+                            backgroundColor: const Color(0xFF8F9E91),
+                            side: const BorderSide(color: Color(0xFF380E4A)),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0),
                             ),

@@ -2,7 +2,6 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'homePage.dart';
 import 'seconds_singleton.dart';
@@ -76,29 +75,29 @@ class _Results extends State<Results> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xFF8F9E91),
+      color: const Color(0xFF8F9E91),
       child: Container(
         color: Colors.brown,
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Text(
 // FIX -----
-                    '${totalDistance.toStringAsFixed(2)}',
-                    style: TextStyle(
+                    totalDistance.toStringAsFixed(2),
+                    style: const TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(bottom: 20.0),
                   child: Text(
                     'Total Kilometers',
@@ -111,7 +110,7 @@ class _Results extends State<Results> {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -121,11 +120,11 @@ class _Results extends State<Results> {
                       width: 150,
                       height: 110,
                       color: Colors.green,
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Column(
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(8.0),
                             child: Text(
 // FIX ---------
                               _formatTime(totalTime),
@@ -136,7 +135,7 @@ class _Results extends State<Results> {
                               ),
                             ),
                           ),
-                          Text(
+                          const Text(
                             'Total Time', //   FIX *******************************
                             style: TextStyle(
                               fontSize: 16,
@@ -146,13 +145,13 @@ class _Results extends State<Results> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Container(
                       width: 150,
                       height: 110,
                       color: Colors.green,
-                      padding: EdgeInsets.all(10),
-                      child: Column(
+                      padding: const EdgeInsets.all(10),
+                      child: const Column(
                         children: [
                           Padding(
                             padding: EdgeInsets.all(8.0),
@@ -184,22 +183,22 @@ class _Results extends State<Results> {
                       width: 150,
                       height: 110,
                       color: Colors.green,
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Column(
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(8.0),
                             child: Text(
 // FIX ------
                               _avgPage(totalDistance, totalTime),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
                             ),
                           ),
-                          Text(
+                          const Text(
                             'Average Pace',
                             style: TextStyle(
                               fontSize: 16,
@@ -209,13 +208,13 @@ class _Results extends State<Results> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Container(
                       width: 150,
                       height: 110,
                       color: Colors.green,
-                      padding: EdgeInsets.all(10),
-                      child: Column(
+                      padding: const EdgeInsets.all(10),
+                      child: const Column(
                         children: [
                           Padding(
                             padding: EdgeInsets.all(8.0),
@@ -243,17 +242,17 @@ class _Results extends State<Results> {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: returnHome,
               style: ElevatedButton.styleFrom(
-                primary: Colors.black,
-                minimumSize: Size(160, 60),
+                backgroundColor: Colors.black,
+                minimumSize: const Size(160, 60),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              child: Text('Home'),
+              child: const Text('Home'),
             ),
           ],
         ),
@@ -265,7 +264,7 @@ class _Results extends State<Results> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-          builder: (context) => HomePage(
+          builder: (context) => const HomePage(
                 title: '',
               )),
     );
@@ -304,7 +303,7 @@ class _Results extends State<Results> {
 
       db.collection("users").doc(id).collection("workouts").add(workOut);
     } catch (e) {
-      print("Error: " + e.toString());
+      print("Error: $e");
     }
   }
 }

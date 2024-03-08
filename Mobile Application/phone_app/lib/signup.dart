@@ -20,8 +20,8 @@ class Login extends StatelessWidget {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            title: Text('Login & Signup'),
-            bottom: TabBar(
+            title: const Text('Login & Signup'),
+            bottom: const TabBar(
               tabs: [
                 Tab(text: 'Login'),
                 Tab(text: 'Signup'),
@@ -43,32 +43,34 @@ class Login extends StatelessWidget {
 class LoginCard extends StatelessWidget {
   TextEditingController passwordController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+
+  LoginCard({super.key});
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Card(
-        margin: EdgeInsets.all(20.0),
+        margin: const EdgeInsets.all(20.0),
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               TextField(
                 controller: emailController,
-                decoration: InputDecoration(labelText: 'Email'),
+                decoration: const InputDecoration(labelText: 'Email'),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               TextField(
                 controller: passwordController,
-                decoration: InputDecoration(labelText: 'Password'),
+                decoration: const InputDecoration(labelText: 'Password'),
                 obscureText: true,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   login(context);
                 },
-                child: Text('Login'),
+                child: const Text('Login'),
               ),
             ],
           ),
@@ -118,7 +120,7 @@ class LoginCard extends StatelessWidget {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            builder: (context) => HomePage(
+            builder: (context) => const HomePage(
                   title: '',
                 )),
       );
@@ -133,43 +135,45 @@ class SignupCard extends StatelessWidget {
   TextEditingController confirmPasswordController = TextEditingController();
 
   FirebaseFirestore db = FirebaseFirestore.instance;
+
+  SignupCard({super.key});
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Card(
-        margin: EdgeInsets.all(20.0),
+        margin: const EdgeInsets.all(20.0),
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               TextField(
                 controller: nameController,
-                decoration: InputDecoration(labelText: 'Full Name'),
+                decoration: const InputDecoration(labelText: 'Full Name'),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               TextField(
                 controller: emailController,
-                decoration: InputDecoration(labelText: 'Email'),
+                decoration: const InputDecoration(labelText: 'Email'),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               TextField(
                 controller: passwordController,
-                decoration: InputDecoration(labelText: 'Password'),
+                decoration: const InputDecoration(labelText: 'Password'),
                 obscureText: true,
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               TextField(
                 controller: confirmPasswordController,
-                decoration: InputDecoration(labelText: 'Confirm Password'),
+                decoration: const InputDecoration(labelText: 'Confirm Password'),
                 obscureText: true,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   signUp(context);
                 },
-                child: Text('Signup'),
+                child: const Text('Signup'),
               ),
             ],
           ),
@@ -253,7 +257,7 @@ class SignupCard extends StatelessWidget {
           .createUserWithEmailAndPassword(
               email: emailController.text, password: passwordController.text);
     } catch (e) {
-      print("error: " + e.toString());
+      print("error: $e");
     }
     if (userCredential != null) {
       String id = userCredential.user!.uid;
@@ -267,7 +271,7 @@ class SignupCard extends StatelessWidget {
       try {
         await db.collection("users").doc(id).set(user);
       } catch (e) {
-        print("Error: " + e.toString());
+        print("Error: $e");
       }
     }
 
@@ -275,7 +279,7 @@ class SignupCard extends StatelessWidget {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            builder: (context) => HomePage(
+            builder: (context) => const HomePage(
                   title: '',
                 )),
       );

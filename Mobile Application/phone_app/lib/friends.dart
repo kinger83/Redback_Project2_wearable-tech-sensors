@@ -3,7 +3,6 @@ import 'homePage.dart';
 import 'main.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '';
 
 class MyFriendScreen extends StatefulWidget {
   const MyFriendScreen({Key? key, required this.title}) : super(key: key);
@@ -70,7 +69,7 @@ class _MyFriendScreenState extends State<MyFriendScreen> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF8F9E91), // Set the background color
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).pop(); // This will navigate back.
           },
@@ -85,9 +84,9 @@ class _MyFriendScreenState extends State<MyFriendScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const SizedBox(height: 0),
-                  Container(
+                  const SizedBox(
                     width: double.infinity,
-                    child: const Text(
+                    child: Text(
                       "Friends",
                       style: TextStyle(
                         fontSize: 28,
@@ -104,7 +103,7 @@ class _MyFriendScreenState extends State<MyFriendScreen> {
                       children: [
                         Text(
                           "Total Friends: ${friends.length}",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 10,
                             color: Colors.white,
                           ),
@@ -166,7 +165,7 @@ class _MyFriendScreenState extends State<MyFriendScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomePage(title: ""),
+                    builder: (context) => const HomePage(title: ""),
                   ),
                 );
                 break;
@@ -182,14 +181,14 @@ class _MyFriendScreenState extends State<MyFriendScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Setting(title: "Settings"),
+                    builder: (context) => const Setting(title: "Settings"),
                   ),
                 );
                 break;
             }
           });
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -212,7 +211,7 @@ class TransparentProfileButton extends StatelessWidget {
   final String name;
   final String mutualFriends;
 
-  TransparentProfileButton({
+  const TransparentProfileButton({super.key, 
     required this.name,
     required this.mutualFriends,
   });
@@ -228,27 +227,27 @@ class TransparentProfileButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       child: Row(
         children: [
-          CircleAvatar(
+          const CircleAvatar(
             radius: 30,
             backgroundImage: AssetImage('assets/profile_image.jpg'),
           ),
-          SizedBox(width: 12),
+          const SizedBox(width: 12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   name,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
                   mutualFriends,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 12,
                     color: Colors.white,
                   ),
@@ -258,11 +257,10 @@ class TransparentProfileButton extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {},
-            child: Text("Unfriend"),
             style: ElevatedButton.styleFrom(
-              primary: Colors.red,
-              onPrimary: Colors.white,
+              foregroundColor: Colors.white, backgroundColor: Colors.red,
             ),
+            child: const Text("Unfriend"),
           ),
         ],
       ),
